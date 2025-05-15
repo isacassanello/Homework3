@@ -1,5 +1,5 @@
 #pragma once
-#include <string> 
+#include <iostream>
 using namespace std;
 
 // ===================================== CLASE PUNTO =====================================
@@ -16,8 +16,8 @@ class Punto{
         double getX() const;
         double getY() const;
 
-        double setX(double x);
-        double setY(double y);
+        void setX(double x);
+        void setY(double y);
 
         void mostrar() const;     
         
@@ -35,11 +35,11 @@ class Circulo{
         Circulo() = default;
         Circulo(const Punto &centro, double r);
 
-        Punto getCentro();
-        double getRadio();
+        Punto getCentro() const;
+        double getRadio() const;
 
-        double setCentro(const Punto &c);
-        double setRadio(double r);
+        void setCentro(const Punto &c);
+        void setRadio(double r);
 
         void mostrar() const;
 
@@ -62,9 +62,9 @@ class Elipse{
         double getA() const;
         double getB() const;
 
-        double setCentro(const Punto &c);
-        double setA(double a);
-        double setB(double b);
+        void setCentro(const Punto &c);
+        void setA(double a);
+        void setB(double b);
 
         void mostrar() const;
 
@@ -87,13 +87,11 @@ class Rectangulo{
         double getAncho() const;
         double getLargo() const;
 
-        double setVertice(const Punto &vertice);
-        double setAncho(double a);
-        double setLargo(double l);
+        void setVertice(const Punto &vertice);
+        void setAncho(double a);
+        void setLargo(double l);
 
         void mostrar() const;
 
         ~Rectangulo() = default;
 };
-
-// ===================================== CLASE PROCESADOR FIGURA =====================================

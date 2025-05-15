@@ -1,6 +1,4 @@
 #include "Figuras.h"
-#include <iostream>
-using namespace std;
 
 // ===================================== IMPLEMENTACION CLASE PUNTO =====================================
 
@@ -14,11 +12,11 @@ double Punto::getY() const{
     return coordenadaY;
 }
 
-double Punto::setX(double x){
+void Punto::setX(double x){
     this->coordenadaX = x;
 }
 
-double Punto::setY(double y){
+void Punto::setY(double y){
     this->coordenadaY = y;
 }
 
@@ -30,25 +28,24 @@ void Punto::mostrar() const{
 
 Circulo::Circulo(const Punto &centro, double r) : centro(centro), radio(r) {}
 
-Punto Circulo::getCentro(){
+Punto Circulo::getCentro() const{
     return centro;
 }
-double Circulo::getRadio(){
+double Circulo::getRadio() const{
     return radio;
 }
 
-double Circulo::setCentro(const Punto &c){
+void Circulo::setCentro(const Punto &c){
     this->centro = c;
 }
-double Circulo::setRadio(double r){
+void Circulo::setRadio(double r){
     this->radio = r;
 }
 
 void Circulo::mostrar() const{
-    cout << "Centro del circulo: "; centro.mostrar();
-    cout << "\nRadio del circulo: " << radio << endl;
+    cout << "   - Centro del circulo: "; centro.mostrar();
+    cout << "   - Radio del circulo: " << radio << "\n" << endl;
 }
-
 
 // ===================================== IMPLEMENTACION CLASE ELIPSE =====================================
 
@@ -66,28 +63,27 @@ double Elipse::getB() const{
     return b; 
 }
 
-double Elipse::setCentro(const Punto &c){
+void Elipse::setCentro(const Punto &c){
     this->centro = c;
 }
 
-double Elipse::setA(double a){
+void Elipse::setA(double a){
     this->a = a;
 }
 
-double Elipse::setB(double b){
+void Elipse::setB(double b){
     this->b = b;
 }
 
 void Elipse::mostrar() const{
-    cout << "Centro del Elipse: "; centro.mostrar();
-    cout << "\nSemieje mayor (a): " << a << "\nSemieje menor (b): " << b << endl;
+    cout << "   - Centro del Elipse: "; centro.mostrar();
+    cout << "   - Semieje mayor (a): " << a << "\n   - Semieje menor (b): " << b << "\n" << endl;
 }
-
 
 // ===================================== IMPLEMENTACION CLASE CIRCULO =====================================
 
 Rectangulo::Rectangulo(const Punto &vertice, double a, double l) 
-    : verticeInferiorIzquierdo(vertice), ancho(a), largo(a) {}
+    : verticeInferiorIzquierdo(vertice), ancho(a), largo(l) {}
 
 Punto Rectangulo::getVertice() const{
     return verticeInferiorIzquierdo;
@@ -101,22 +97,19 @@ double Rectangulo::getLargo() const{
     return largo;
 }
 
-double Rectangulo::setVertice(const Punto &vertice){
+void Rectangulo::setVertice(const Punto &vertice){
     this->verticeInferiorIzquierdo = vertice;
 }
 
-double Rectangulo::setAncho(double a){
+void Rectangulo::setAncho(double a){
     this->ancho = a;
 }
 
-double Rectangulo::setLargo(double l){
+void Rectangulo::setLargo(double l){
     this->largo = l;
 }
 
 void Rectangulo::mostrar() const{
-    cout << "Vertice inferior izquierdo: "; verticeInferiorIzquierdo.mostrar();
-    cout << "\nAncho del rectangulo: " << ancho << "\nLargo del rectangulo: " << largo << endl;
+    cout << "   - Vertice inferior izquierdo: "; verticeInferiorIzquierdo.mostrar();
+    cout << "   - Ancho: " << ancho << "\n   - Largo: " << largo << "\n" << endl;
 }
-
-
-// ===================================== IMPLEMENTACION CLASE PROCESADOR FIGURA =====================================

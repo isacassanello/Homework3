@@ -1,0 +1,6 @@
+Como compilar cada ejercicio
+
+EJERCICIO 2
+    Paso 1 -> cd ejercicio2
+    Paso 2 -> make run
+    Paso 3 -> make clean (para eliminar los archivos generados durante la compilacion)
