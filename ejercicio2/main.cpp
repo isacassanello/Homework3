@@ -26,7 +26,7 @@ int main(){
     r.mostrar();
     cout << "Area del rectangulo: " << ProcesadorFigura<Rectangulo>::calcularArea(r) << "\n" << endl;
 
-    // creo un rectangulo con vertice inferior izquierdo (2,3), ancho = 6, largo = 8
+    // creo un punto (34, 3)
     Punto p(Punto(34, 2));
     cout << "=============== PUNTO ===============" << endl;
     cout << "Informacion del punto: ";
