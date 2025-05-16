@@ -26,5 +26,17 @@ int main(){
     r.mostrar();
     cout << "Area del rectangulo: " << ProcesadorFigura<Rectangulo>::calcularArea(r) << "\n" << endl;
 
+    // creo un rectangulo con vertice inferior izquierdo (2,3), ancho = 6, largo = 8
+    Punto p(Punto(34, 2));
+    cout << "=============== PUNTO ===============" << endl;
+    cout << "Informacion del punto: ";
+    p.mostrar(); 
+    try {
+    cout << "\nArea del punto: " << ProcesadorFigura<Punto>::calcularArea(p) << endl;
+    } catch (const std::logic_error& e) {
+    cerr << "Error -> " << e.what() << endl;
+    }
+    cout << "\n";
+
     cout << "-------------------------------------------------" << endl;
 }

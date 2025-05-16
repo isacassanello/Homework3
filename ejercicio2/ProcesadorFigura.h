@@ -5,7 +5,9 @@
 template <typename T>
 class ProcesadorFigura {
     public:
-        static double calcularArea(const T& figura);
+        static double calcularArea(const T& figura){
+            throw logic_error("No se puede calcular el area para este tipo de figura");
+        }
 };
 
 // especializacion para circulo
