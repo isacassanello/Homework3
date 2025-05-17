@@ -1,6 +1,8 @@
-Como compilar cada ejercicio
+Como compilar los ejercicios
 
-EJERCICIO 2
-    Paso 1 -> cd ejercicio2
+EJERCICIO X
+    Paso 1 -> cd ejercicioX
     Paso 2 -> make run
     Paso 3 -> make clean (para eliminar los archivos generados durante la compilacion)
+
+X se reempleaza con 1, 2, 3 correspondiente a los ejercicios que se quiera ejecutar
