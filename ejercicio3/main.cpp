@@ -2,6 +2,7 @@
 
 int main(){
     cout << "-------------------------------------------------" << "\n" << endl;
+    cout << "Visualizacion del JSON:\n";
     
     JuntarDatos colectorDatos;
 
