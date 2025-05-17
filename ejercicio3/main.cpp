@@ -14,11 +14,11 @@ int main(){
     colectorDatos.agregar(string("Hola"));
     colectorDatos.agregar(string("Mundo"));
 
-    // Agrego listas de enteros
+    // agrego listas de enteros
     colectorDatos.agregarLista({1, 2});
     colectorDatos.agregarLista({3, 4});
 
-    // Creo el generador de JSON
+    // creo el constructor de JSON
     ConstruirJson constructor(colectorDatos);
     constructor.imprimirJson();
 

@@ -79,6 +79,6 @@ void ConstruirJson::imprimirJson() const{
     cout << "}\n";
 }
 
-// Instanciación explícita de los tipos usados
+// instanciacion explicita de los tipos usados
 template void JuntarDatos::agregar<double>(const double&);
 template void JuntarDatos::agregar<string>(const string&);
