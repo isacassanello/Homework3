@@ -1,6 +1,8 @@
 #include "Figuras.h"
 #define PI 3.141592653589793 // para calculas las areas
 
+// TEMPLATE SPECIALIZATION
+
 // plantilla genérica
 template <typename T>
 class ProcesadorFigura {
