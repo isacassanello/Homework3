@@ -107,6 +107,7 @@ void Posicion::deserializar(ifstream& in) {
 
 void Posicion::imprimir() const{
     cout << "   -> Posicion: (" << latitud << ", " << longitud << ", " << altitud << ")" << endl;
+    cout << "           El primer elmento es latitud, el segundo longitud y el tercero altitud" << endl;
     cout << "   -> Tiempo: " << *tiempoMedicion << endl;
 }
 
