@@ -16,9 +16,9 @@ void ConstruirJson::setListas(const string& vec){
 }
 
 void ConstruirJson::imprimirJson() const {
-    string json = "{\n";
-    json += "  \"vec_doubles\" : " + doublesStr + ",\n";
-    json += "  \"palabras\" : " + palabrasStr + ",\n";
+    string json = "\n{";
+    json += " \"vec_doubles\" : " + doublesStr + "\n";
+    json += "  \"palabras\" : " + palabrasStr + "\n";
     json += "  \"listas\" : " + listasStr + "\n";
     json += "}";
     cout << json << endl;

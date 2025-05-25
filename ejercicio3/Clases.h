@@ -22,39 +22,39 @@ class JuntarDatos{
 
             // vec_doubles
             if constexpr(is_same_v<T, double>){
-                resultado += "["
+                resultado += "[";
                 for (size_t i = 0; i < datos.size(); i++){
-                    resultado += to_string(datos[i]); // imprimo cada numero del vector
+                    string valor = to_string(datos[i]);
+                    valor.erase(valor.find_last_not_of('0') + 1); // elimina ceros finales
+                    resultado += valor; 
                     if (i != datos.size() - 1) resultado += ", "; // imprimo coma si no es el último
                 }
-                resultado += "],\n ";
+                resultado += "],";
             }
 
             // palabras
             else if constexpr(is_same_v<T, string>){
-                resultado += "["
+                resultado += "[";
                 for (size_t i = 0; i < datos.size(); i++){
                     resultado += "\"" + datos[i] + "\"";
                     if (i != datos.size() - 1) resultado += ", ";
                 }
-                resultado += "],\n ";
+                resultado += "],";
             }
 
             // listas
-            else if constexpr(is_same_v<T, string>){
+            else if constexpr(is_same_v<T, vector<int>>){
                 resultado += "[\n";
                 for (size_t i = 0; i < datos.size(); i++){
-                    resultado += "       [";
+                    resultado += "            [";
                     for (size_t j = 0; j < datos[i].size(); j++){
                         resultado += to_string(datos[i][j]);
-                        if (j != datos[i].size() - 1) cout << ", "; // imprimo coma si no es el último
+                        if (j != datos[i].size() - 1) resultado += ", "; // imprimo coma si no es el último
                     }
-                    resultado += "]"
-                    if (i != datos.size() - 1) cout << ",";
-                    resultado += "\n";
+                    resultado += "]";
+                    if (i != datos.size() - 1) resultado += ",\n";
                 }
-                resultado += "      ]\n";
-                resultado += "}\n";
+                resultado += "\n           ]";
             }
 
             else {
