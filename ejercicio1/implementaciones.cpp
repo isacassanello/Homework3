@@ -4,10 +4,13 @@
 
 MedicionBase::MedicionBase(float t) : tiempoMedicion(make_unique<float>(t)) {}
 
+// Constructor de copia: crea un nuevo unique_ptr que apunta a una copia del float del otro objeto
+// No se puede copiar directamente un unique_ptr porque su ownership es exclusivo, asi que se crea uno nuevo con el mismo valor apuntado por el unique_ptr del objeto original (otro)
 MedicionBase::MedicionBase(const MedicionBase& otro)
     : tiempoMedicion(make_unique<float>(*otro.tiempoMedicion)) {}
 
-// operador de asignacion por copia
+// Operador de asignacion por copia
+// Primero evita la autoasignacion, luego crea un nuevo unique_ptr con una copia del valor apuntado por el puntero del objeto original
 MedicionBase& MedicionBase::operator=(const MedicionBase& otro) { 
     if (this != &otro) {
         tiempoMedicion = make_unique<float>(*otro.tiempoMedicion);
@@ -16,19 +19,21 @@ MedicionBase& MedicionBase::operator=(const MedicionBase& otro) {
 }
 
 float MedicionBase::getTiempo(){
-    return *tiempoMedicion;
+    return *tiempoMedicion; 
 }
 
 // =============================== Implementacion clase Presion ===============================
 
 Presion::Presion(float p, float q, float t) : MedicionBase(t), presionEstatica(p), presionDinamica(q) {}
 
+// Constructor de copia: copia cada uno de los miembros del objeto original
 Presion::Presion(const Presion& otro)
-    : MedicionBase(otro), // llama al constructor de copia de la clase base
+    : MedicionBase(otro), // llama al constructor de copia de la clase base para copiar el tiempo correctamente
     presionEstatica(otro.presionEstatica),
     presionDinamica(otro.presionDinamica) {}
 
-// operador de asignacion por copia
+// Operador de asignacion por copia
+// Se asegura de que no haya autoasignacion y luego copia cada miembro manualmente
 Presion& Presion::operator=(const Presion& otro) {
     if (this != &otro) {
         MedicionBase::operator=(otro);
@@ -38,7 +43,7 @@ Presion& Presion::operator=(const Presion& otro) {
     return *this;
 }
 
-// guardo los datos de un objeto Presion en un archivo binario
+// Guardo los datos de un objeto Presion en un archivo binario
 void Presion::serializar(ofstream& out) const {
     out.write(reinterpret_cast<const char*>(&presionEstatica), sizeof(float));
         // 1) &presionEstatica obtiene la direccion de memoria donde esta almacenado el valor float presionEstatica
@@ -71,13 +76,14 @@ void Presion::imprimir() const {
 
 Posicion::Posicion(float lat, float lon, float alt, float t) : MedicionBase(t), latitud(lat), longitud(lon), altitud(alt) {}
 
+// idem logica Presion
 Posicion::Posicion(const Posicion& otro)
-    : MedicionBase(otro), // llama al constructor de copia de la clase base
+    : MedicionBase(otro), 
     latitud(otro.latitud),
     longitud(otro.longitud),
     altitud(otro.altitud) {}
 
-// operador de asignacion por copia
+// idem logica Presion
 Posicion& Posicion::operator=(const Posicion& otro) {
     if (this != &otro) {
         MedicionBase::operator=(otro);
@@ -88,14 +94,15 @@ Posicion& Posicion::operator=(const Posicion& otro) {
     return *this;
 }
 
-// guardo los datos de un objeto Presion en un archivo binario
+// idem logica Presion
 void Posicion::serializar(ofstream& out) const {
     out.write(reinterpret_cast<const char*>(&latitud), sizeof(float));
     out.write(reinterpret_cast<const char*>(&longitud), sizeof(float));
     out.write(reinterpret_cast<const char*>(&altitud), sizeof(float));
-    out.write(reinterpret_cast<const char*>(tiempoMedicion.get()), sizeof(float)); // accedo al contenido del puntero unique_ptr<float> usando .get() -> devuelve un puntero float*
+    out.write(reinterpret_cast<const char*>(tiempoMedicion.get()), sizeof(float)); 
 }
 
+// idem logica Presion
 void Posicion::deserializar(ifstream& in) {
     in.read(reinterpret_cast<char*>(&latitud), sizeof(float));
     in.read(reinterpret_cast<char*>(&longitud), sizeof(float));
@@ -116,16 +123,19 @@ void Posicion::imprimir() const{
 SaveFlightData::SaveFlightData(const Posicion& p, const Presion& q) 
     : posicion(p), presion(q) {}
 
+// Serializa ambos objetos llamando a sus respectivos metodos
 void SaveFlightData::serializar(ofstream& out) const{
     posicion.serializar(out);
     presion.serializar(out);
 }
 
+// Deserializa ambos objetos desde el archivo binario en el mismo orden en que fueron escritos
 void SaveFlightData::deserializar(ifstream& in){
     posicion.deserializar(in);
     presion.deserializar(in);
 }
 
+// Imprime ambas mediciones usando sus metodos de impresion
 void SaveFlightData::imprimir() const{
     cout << "Medicion de Posicion:" << endl;
     posicion.imprimir();
