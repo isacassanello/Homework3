@@ -1,31 +1,20 @@
-# Nombre del ejecutable
 TARGET = main
 
-# Compilador y flags
 CXX = g++
 CXXFLAGS = -Wall -std=c++17 -Iheaders
 
-# Archivos fuente
-SRCDIR = sources
-OBJDIR = obj
-OBJS = $(OBJDIR)/main.o $(OBJDIR)/Clase2.o
+SRCS = sources/main.cpp \
+       sources/ConstruirJson.cpp 
 
-# Regla por defecto
+OBJS = $(SRCS:.cpp=.o)
+
 all: $(TARGET)
 
-# Compilación final
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-# Compilar cada archivo fuente por separado
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Ejecutar el programa
-run: all
+run: $(TARGET)
 	./$(TARGET)
 
-# Limpiar archivos generados
 clean:
-	rm -rf $(OBJDIR) $(TARGET)
+	rm -f sources/*.o $(TARGET)

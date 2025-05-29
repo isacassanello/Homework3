@@ -1,5 +1,5 @@
-#include "Clase1.h"
-#include "Clase2.h"
+#include "JuntarDatos.h"
+#include "ConstruirJson.h"
 
 int main(){
     cout << "-------------------------------------------------" << "\n" << endl;
