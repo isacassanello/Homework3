@@ -1,4 +1,7 @@
-#include "Figuras.h"
+#include "Punto.h"
+#include "Circulo.h"
+#include "Elipse.h"
+#include "Rectangulo.h"
 #define PI 3.141592653589793 // para calculas las areas
 
 // TEMPLATE SPECIALIZATION

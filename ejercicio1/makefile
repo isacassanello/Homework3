@@ -1,4 +1,4 @@
-TARGET = programa
+TARGET = main
 
 CXX = g++
 CXXFLAGS = -Wall -std=c++17 -Iheaders
@@ -15,4 +15,4 @@ run: all
 	./$(TARGET)
 
 clean:
-	rm -f $(TARGET) src/*.o
+	rm -f $(TARGET) sources/*.o

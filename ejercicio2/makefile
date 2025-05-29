@@ -1,22 +1,31 @@
-# nombre del ejecutable
-TARGET = main
+# Nombre del ejecutable
+TARGET = programa
 
-# compilador
+# Compilador y flags
 CXX = g++
-CXXFLAGS = -Wall -std=c++11
+CXXFLAGS = -Wall -std=c++17 -Iheaders
 
-# archivos fuente y objeto
-SRC = main.cpp Figuras.cpp
-OBJ = $(SRC:.cpp=.o)
+# Archivos fuente
+SRCS = sources/main.cpp \
+       sources/Punto.cpp \
+       sources/Circulo.cpp \
+       sources/Elipse.cpp \
+       sources/Rectangulo.cpp
 
+# Archivos objeto
+OBJS = $(SRCS:.cpp=.o)
+
+# Regla por defecto
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJ)
+# Cómo construir el ejecutable
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-run: all
+# Regla para ejecutar el programa
+run: $(TARGET)
 	./$(TARGET)
 
-# limpia archivos objeto y el ejecutable
+# Limpieza
 clean:
-	rm -f $(TARGET) *.o
+	rm -f sources/*.o $(TARGET)

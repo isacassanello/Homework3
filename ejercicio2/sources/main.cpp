@@ -1,4 +1,7 @@
-#include "Figuras.h"
+#include "Punto.h"
+#include "Circulo.h"
+#include "Elipse.h"
+#include "Rectangulo.h"
 #include "ProcesadorFigura.h"
 using namespace std;
 
