@@ -36,8 +36,8 @@ class ProcesadorFigura<Elipse> {
 // especializacion para rectangulo
 template <>
 class ProcesadorFigura<Rectangulo> {
-public:
-    static double calcularArea(const Rectangulo& r) {
-        return r.getAncho() * r.getLargo();
-    }
+    public:
+        static double calcularArea(const Rectangulo& r) {
+            return r.getAncho() * r.getLargo();
+        }
 };
