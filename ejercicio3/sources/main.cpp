@@ -1,4 +1,5 @@
-#include "Clases.h"
+#include "Clase1.h"
+#include "Clase2.h"
 
 int main(){
     cout << "-------------------------------------------------" << "\n" << endl;

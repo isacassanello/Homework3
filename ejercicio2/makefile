@@ -1,5 +1,5 @@
 # Nombre del ejecutable
-TARGET = programa
+TARGET = main
 
 # Compilador y flags
 CXX = g++

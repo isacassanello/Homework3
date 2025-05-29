@@ -1,5 +1,4 @@
-#include "Clases.h"
-#include <type_traits>
+#include "Clase2.h"
 
 // =========================== Clase 2 ===========================
 

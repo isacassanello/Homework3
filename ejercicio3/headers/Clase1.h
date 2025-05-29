@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <iostream>
 #include <type_traits>
 using namespace std;
 
@@ -63,20 +62,4 @@ class JuntarDatos{
 
             return resultado;
         }
-};
-
-// =========================== Clase 2 ===========================
-
-class ConstruirJson {
-    private:
-        string doublesStr;
-        string palabrasStr;
-        string listasStr;
-
-    public:
-        void setVecDoubles(const string& vec);
-        void setPalabras(const string& vec);
-        void setListas(const string& vec);
-
-        void imprimirJson() const;
 };

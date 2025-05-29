@@ -1,24 +1,31 @@
-# nombre del ejecutable
+# Nombre del ejecutable
 TARGET = main
 
-# compilador
+# Compilador y flags
 CXX = g++
-CXXFLAGS = -Wall -std=c++17
+CXXFLAGS = -Wall -std=c++17 -Iheaders
 
-# archivos fuente
-SRCS = main.cpp Clases.cpp
-OBJS = $(SRCS:.cpp=.o)
+# Archivos fuente
+SRCDIR = sources
+OBJDIR = obj
+OBJS = $(OBJDIR)/main.o $(OBJDIR)/Clase2.o
 
+# Regla por defecto
 all: $(TARGET)
 
+# Compilación final
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
-# ejecutar el programa (compila si es necesario)
-run: $(TARGET)
+# Compilar cada archivo fuente por separado
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Ejecutar el programa
+run: all
 	./$(TARGET)
 
+# Limpiar archivos generados
 clean:
-	rm -f $(OBJS) $(TARGET)
-
-
+	rm -rf $(OBJDIR) $(TARGET)
