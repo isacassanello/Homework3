@@ -1,22 +1,18 @@
-# nombre del ejecutable
-TARGET = main
+TARGET = programa
 
-# compilador
 CXX = g++
-CXXFLAGS = -Wall -std=c++17
+CXXFLAGS = -Wall -std=c++17 -Iheaders
 
-# archivos fuente y objeto
-SRC = main.cpp implementaciones.cpp
+SRC = sources/main.cpp sources/MedicionBase.cpp sources/Posicion.cpp sources/Presion.cpp sources/SaveFlightData.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 run: all
 	./$(TARGET)
 
-# limpia archivos objeto y el ejecutable
 clean:
-	rm -f $(TARGET) *.o
+	rm -f $(TARGET) src/*.o

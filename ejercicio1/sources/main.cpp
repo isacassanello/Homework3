@@ -1,4 +1,8 @@
-#include "headers.h"
+#include "IMediciones.h"
+#include "MedicionBase.h"
+#include "Posicion.h"
+#include "Presion.h"
+#include "SaveFlightData.h"
 
 int main(){
     cout << "--------------------------------------------------------" << "\n" << endl;
